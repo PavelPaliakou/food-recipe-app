@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Food recipe app
+React js, react-router-dom, TailWindCss.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
