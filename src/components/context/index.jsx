@@ -53,8 +53,7 @@ export default function GlobalState({ children }) {
         if (index === -1) {
             copyFavoritesList.push(currentElement)
         } else {
-            //FIXME: delete all elements after index. Not working
-            copyFavoritesList.splice(index)
+            copyFavoritesList.splice(index, 1)
         }
 
         setFavoritesList(copyFavoritesList)
