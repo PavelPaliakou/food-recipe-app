@@ -41,17 +41,19 @@ export default function GlobalState({ children }) {
         }
     }
 
-    function handleAddToFavorite(currentIndex) {
+    function handleAddToFavorite(currentElement) {
 
-        console.log(currentIndex);
+        console.log(currentElement);
 
         let copyFavoritesList = Array.from(favoritesList);
 
-        const index = copyFavoritesList.findIndex((element) => element.id === currentIndex.id)
+        // check if element is already present in the favorite list
+        const index = copyFavoritesList.findIndex((element) => element.id === currentElement.id)
 
         if (index === -1) {
-            copyFavoritesList.push(currentIndex)
+            copyFavoritesList.push(currentElement)
         } else {
+            //FIXME: delete all elements after index. Not working
             copyFavoritesList.splice(index)
         }
 
