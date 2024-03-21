@@ -43,7 +43,7 @@ export default function GlobalState({ children }) {
 
     function handleAddToFavorite(currentElement) {
 
-        console.log(currentElement);
+        // console.log(currentElement);
 
         let copyFavoritesList = Array.from(favoritesList);
 
@@ -59,7 +59,7 @@ export default function GlobalState({ children }) {
         setFavoritesList(copyFavoritesList)
     }
 
-    console.log(favoritesList, 'favoritesList');
+    // console.log(favoritesList, 'favoritesList');
 
     return (
         <GlobalContext.Provider
