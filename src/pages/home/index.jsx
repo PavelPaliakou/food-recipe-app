@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { GlobalContext } from "../../components/context";
 import RecipeItem from "../../components/recipeItem";
 import queriesList from "../../data/queryList";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-    const { recipeList, loading } = useContext(GlobalContext);
+    const { recipeList, loading, handleClick } = useContext(GlobalContext);
 
     if (loading) {
         return <p>Loading...</p>
@@ -25,7 +26,13 @@ export default function Home() {
                         </p>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                             {
-                                queriesList.map((element) => <p key={element}>{element}</p>)
+                                queriesList.map((element) =>
+                                    <Link key={element}
+                                        onClick={() => handleClick(element)}
+                                    >
+                                        {element}
+                                    </Link>
+                                )
                             }
                         </div>
                     </div>

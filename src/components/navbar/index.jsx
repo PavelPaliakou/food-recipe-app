@@ -20,7 +20,7 @@ export default function Navbar() {
                     value={searchParam}
                     onChange={(e) => setSearchParam(e.target.value)}
                     placeholder="Enter dish name"
-                    className="bg-white/75 py-3 px-8 rounded-full outline-none lg:*:w-96 shadow-lg shadow-red-100 focus:shadow-red-200"/>
+                    className="py-3 px-8 rounded-full border border-gray-300 outline-none lg:*:w-96 shadow-lg shadow-gray-200 focus:shadow-gray-400"/>
             </form>
             <ul className="flex gap-5">
                 <li>

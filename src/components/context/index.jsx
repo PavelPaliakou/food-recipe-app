@@ -41,6 +41,40 @@ export default function GlobalState({ children }) {
         }
     }
 
+    async function handleClick(ingredientName) {
+        console.log(ingredientName)
+        setSearchParam(ingredientName);
+        fetchRecipes();
+    }
+
+    async function fetchRecipes(){
+        setLoading(true);
+
+        try {
+            const response = await fetch(
+                `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
+            );
+
+            if (!response.ok) {
+                throw new Error(`Error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data?.data?.recipes) {
+                setRecipeList(data?.data?.recipes);
+                setLoading(false);
+                setSearchParam("");
+                navigate('/')
+            }
+
+        } catch (e) {
+            console.log(e);
+            setLoading(false);
+            setSearchParam("");
+        }
+    }
+
     function handleAddToFavorite(currentElement) {
 
         // console.log(currentElement);
@@ -72,7 +106,8 @@ export default function GlobalState({ children }) {
                 recipeDetailsData,
                 setRecipeDetailsData,
                 handleAddToFavorite,
-                favoritesList
+                favoritesList,
+                handleClick
             }}
         >
             {children}
