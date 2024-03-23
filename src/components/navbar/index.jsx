@@ -7,7 +7,7 @@ export default function Navbar() {
     const { searchParam, setSearchParam, handleSubmit } = useContext(GlobalContext);
 
     return (
-        <nav className="container flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between items-center py-8 mx-auto ">
+        <nav className="container flex flex-col lg:flex-row gap-5 lg:gap-0 lg:px-8 justify-between items-center py-8 mx-auto ">
             <NavLink
                 to={"/favorites"}
                 className="text-black hover:text-gray-700 duration-300">

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 export const GlobalContext = createContext(null);
 
+//TODO: searchParam????????
+
 export default function GlobalState({ children }) {
     const [searchParam, setSearchParam] = useState("");
     const [loading, setLoading] = useState(false);
@@ -41,18 +43,16 @@ export default function GlobalState({ children }) {
         }
     }
 
-    async function handleClick(ingredientName) {
-        console.log(ingredientName)
-        setSearchParam(ingredientName);
-        fetchRecipes();
+    function handleClick(ingredientName) {
+        fetchRecipes(ingredientName);
     }
 
-    async function fetchRecipes(){
+    async function fetchRecipes(ingredientName){
         setLoading(true);
 
         try {
             const response = await fetch(
-                `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
+                `https://forkify-api.herokuapp.com/api/v2/recipes?search=${ingredientName}`
             );
 
             if (!response.ok) {
@@ -64,14 +64,12 @@ export default function GlobalState({ children }) {
             if (data?.data?.recipes) {
                 setRecipeList(data?.data?.recipes);
                 setLoading(false);
-                setSearchParam("");
                 navigate('/')
             }
 
         } catch (e) {
             console.log(e);
             setLoading(false);
-            setSearchParam("");
         }
     }
 

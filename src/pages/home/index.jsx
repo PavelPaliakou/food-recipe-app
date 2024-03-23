@@ -22,7 +22,7 @@ export default function Home() {
                         />)
                     : <div className="w-full text-center text-black">
                         <p className="lg:text-4xl text-xl font-extrabold mb-4">
-                            Available search queries
+                            Ingredients
                         </p>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                             {
