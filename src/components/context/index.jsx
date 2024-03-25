@@ -16,31 +16,7 @@ export default function GlobalState({ children }) {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        setLoading(true);
-
-        try {
-            const response = await fetch(
-                `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
-            );
-
-            if (!response.ok) {
-                throw new Error(`Error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            if (data?.data?.recipes) {
-                setRecipeList(data?.data?.recipes);
-                setLoading(false);
-                setSearchParam("");
-                navigate('/')
-            }
-
-        } catch (e) {
-            console.log(e);
-            setLoading(false);
-            setSearchParam("");
-        }
+        fetchRecipes(searchParam);
     }
 
     function handleClick(ingredientName) {
@@ -64,12 +40,14 @@ export default function GlobalState({ children }) {
             if (data?.data?.recipes) {
                 setRecipeList(data?.data?.recipes);
                 setLoading(false);
+                setSearchParam("");
                 navigate('/')
             }
 
         } catch (e) {
             console.log(e);
             setLoading(false);
+            setSearchParam("");
         }
     }
 
