@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export const GlobalContext = createContext(null);
 
-//TODO: searchParam????????
-
 export default function GlobalState({ children }) {
     const [searchParam, setSearchParam] = useState("");
     const [loading, setLoading] = useState(false);
